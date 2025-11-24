@@ -1,0 +1,26 @@
+USE meeting_db;
+
+CREATE TABLE members (   --  회의 참석자 정보
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    department VARCHAR(100),
+    email VARCHAR(100)
+);
+
+
+CREATE TABLE meetings (   -- 회의 기본 정보 (주제, 날짜, 장소 등)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    date DATE,
+    location VARCHAR(100)
+);
+
+CREATE TABLE notes (   --  회의 내용 및 회의록 작성 데이터
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    meeting_id INT,
+    content TEXT,
+    created_by INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (meeting_id) REFERENCES meetings(id),
+    FOREIGN KEY (created_by) REFERENCES members(id)
+);
