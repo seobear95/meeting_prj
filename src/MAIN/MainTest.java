@@ -2,6 +2,8 @@ package MAIN;
 
 import DAO.MeetingDAO;
 import DB.DBUtil;
+import UI.MeetingUI;
+
 import java.sql.*;
 
 public class MainTest {
@@ -24,7 +26,28 @@ public class MainTest {
       //  MeetingDAO.deleteMeeting(conn,8);
 
        //  MeetingDAO.updateMeeting(conn,"수정제목변경","2025-12-01","304", 1);
-        MeetingDAO.selectAllMeeting(conn);
+       // MeetingDAO.selectAllMeeting(conn);
+       // MeetingDAO.selectMeeting(conn,1);
+
+       // 회의 첫 시작에서 일정논의
+      //  MeetingDAO.insertMeeting(conn, "일정논의 회의","2025-12-1","306");
+       // 예산관련 논의
+     //  MeetingDAO.insertMeeting(conn, "예산관련 논의", "2025-12-1", "304");
+
+       // 전체 어떤 회의가 있었는지 확인필요
+     //  MeetingDAO.selectAllMeeting(conn);
+
+       // 예산관련 내용이 수정 필요해
+      //  MeetingDAO.updateMeeting(conn,"예산관련수정","2025-12-2", "305",11);
+
+        //일정논의 회의는 삭제 필요해.
+     //   MeetingDAO.deleteMeeting(conn,10);
+
+        //최종 결과
+     //   MeetingDAO.selectAllMeeting(conn);
+
+        new MeetingUI();
+
 
 
     }
