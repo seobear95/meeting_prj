@@ -67,5 +67,50 @@ public class MeetingDAO {
 
 
     // 조회
+    public static void selectMeeting(Connection con, int meeting_id)
+    {
+        String sql = "SELECT * FROM meetings WHERE id = ?";
+        try{
+           PreparedStatement pst = con.prepareStatement(sql);
+           pst.setInt(1, meeting_id);
+           ResultSet rs = pst.executeQuery();
+           if(rs.next()){
+               int id = rs.getInt("id");
+               String title = rs.getString("title");
+               String date = rs.getString("date");
+               String location = rs.getString("location");
+               System.out.println(id + " | " + title + " | " + date + " | " + location);
+           }
+        }catch(SQLException e){
+            System.out.println( meeting_id + " 회의 정보 조회 중 예외밝생: " +e.getMessage());
+        }
+
+    }
+
+    public static void selectAllMeeting(Connection con)
+    {
+        String sql = "SELECT * FROM meetings";
+        try{
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            System.out.println("회의록 테이블 출력 조회 시작");
+            System.out.println("id"+"\t |" +"title" +"\t |" +"date" +"\t |" +"location");
+            while(rs.next()){  // 커서를 한줄씩 내려오는 것, 한 행씩 rs 가 받아온다
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                Date date = rs.getDate("date");
+                String location = rs.getString("location");
+
+                System.out.println(id+"\t | "+title+"\t | "+date+"\t | "+location);
+
+            }
+            System.out.println("회의록 테이블 출력 조회 완료!!");
+
+        }catch(SQLException e){
+            System.out.println("회의록 목록 조회 중 예외 발생: "+ e.getMessage());
+        }
+
+    }
 
 }

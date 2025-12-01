@@ -23,7 +23,9 @@ public class MainTest {
       //  MeetingDAO.deleteMeeting(conn,9);
       //  MeetingDAO.deleteMeeting(conn,8);
 
-         MeetingDAO.updateMeeting(conn,"수정제목변경","2025-12-01","304", 1);
+       //  MeetingDAO.updateMeeting(conn,"수정제목변경","2025-12-01","304", 1);
+        MeetingDAO.selectAllMeeting(conn);
+
 
     }
 }
