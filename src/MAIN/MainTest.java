@@ -21,30 +21,31 @@ public class MainTest {
         //MeetingDAO.insertMeeting(conn, "최종회의", "2025-12-24", "혁신관 306");
 
 
-      //  System.out.println(" CRUD 작업 가능 - delete test");
-      //  MeetingDAO.deleteMeeting(conn,9);
-      //  MeetingDAO.deleteMeeting(conn,8);
+       // System.out.println(" CRUD 작업 가능 - delete test");
+      //  MeetingDAO.deleteMeeting(conn,1);
+      //  MeetingDAO.deleteMeeting(conn,2);
 
-       //  MeetingDAO.updateMeeting(conn,"수정제목변경","2025-12-01","304", 1);
-       // MeetingDAO.selectAllMeeting(conn);
-       // MeetingDAO.selectMeeting(conn,1);
+      //  MeetingDAO.selectAllMeeting(conn);
+      //  MeetingDAO.updateMeeting(conn,"수정제목변경","2025-12-01","304", 4);
+      //  MeetingDAO.selectMeeting(conn,4);
+      //  MeetingDAO.selectAllMeeting(conn);
 
        // 회의 첫 시작에서 일정논의
-      //  MeetingDAO.insertMeeting(conn, "일정논의 회의","2025-12-1","306");
+       // MeetingDAO.insertMeeting(conn, "일정논의 회의","2025-12-1","306");
        // 예산관련 논의
-     //  MeetingDAO.insertMeeting(conn, "예산관련 논의", "2025-12-1", "304");
+       // MeetingDAO.insertMeeting(conn, "예산관련 논의", "2025-12-1", "304");
 
        // 전체 어떤 회의가 있었는지 확인필요
-     //  MeetingDAO.selectAllMeeting(conn);
+      // MeetingDAO.selectAllMeeting(conn);
 
        // 예산관련 내용이 수정 필요해
-      //  MeetingDAO.updateMeeting(conn,"예산관련수정","2025-12-2", "305",11);
+      // MeetingDAO.updateMeeting(conn,"예산관련수정","2025-12-2", "305",17);
 
         //일정논의 회의는 삭제 필요해.
-     //   MeetingDAO.deleteMeeting(conn,10);
+      // MeetingDAO.deleteMeeting(conn,16);
 
         //최종 결과
-     //   MeetingDAO.selectAllMeeting(conn);
+       // MeetingDAO.selectAllMeeting(conn);
 
         new MeetingUI();
 
