@@ -1,6 +1,7 @@
 package UI;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class MeetingUI extends JFrame {
 
@@ -31,6 +32,10 @@ public class MeetingUI extends JFrame {
         noteBtn.addActionListener(e -> new NoteUI());
         //회의 추가 버튼 클릭 시 MeetingInsertUI 열기
         insertBtn.addActionListener(e -> new MeetingInsertUI());
+        //회의록 목록 보기 클릭시
+        viewBtn.addActionListener(e -> new MeetingListUI());
+
+
     }
 
 

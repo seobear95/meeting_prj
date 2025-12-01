@@ -19,7 +19,7 @@ public class MeetingListUI extends JFrame {
         add(new JScrollPane(textArea), BorderLayout.CENTER);
 
         try (Connection conn = DBUtil.getConnection()) {
-            MeetingDAO.selectAllMeeting(conn);
+            List<String> list = MeetingDAO.getAllMeeting(conn);
             for (String row : list) {
                 textArea.append(row + "\n");
             }
