@@ -1,4 +1,7 @@
 package DAO;
+import DB.DBUtil;
+import MODEL.Meeting;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,9 +26,11 @@ public class MeetingDAO {
     }
 
     // 삭제
-    public static void deleteMeeting(Connection con, int meeting_id){
+    public static void deleteMeeting( int meeting_id){
+        Connection con = null;
         String sql = "DELETE FROM meetings WHERE id = ?";
         try{
+            con = DBUtil.getConnection();
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, meeting_id);
             int rows = pst.executeUpdate();  // 1 or 0
@@ -37,6 +42,12 @@ public class MeetingDAO {
 
         } catch (SQLException e) {
             System.out.println("회의 정보 삭제 중에 SQL예외 발생: "+ e.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -81,6 +92,9 @@ public class MeetingDAO {
                String title = rs.getString("title");
                String date = rs.getString("date");
                String location = rs.getString("location");
+
+               Meeting meeting = new Meeting(id,title,date,location);
+
                System.out.println(id + " | " + title + " | " + date + " | " + location);
            }
         }catch(SQLException e){
@@ -90,11 +104,14 @@ public class MeetingDAO {
     }
 
 
-    public static List<String> getAllMeeting(Connection con)
+    public static List<String> getAllMeeting()
     {
+
         String sql = "SELECT * FROM meetings";
         List<String> result  = new ArrayList<>();
+        Connection con = null;
         try{
+            con = DBUtil.getConnection();
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
@@ -107,6 +124,12 @@ public class MeetingDAO {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         return result;
 

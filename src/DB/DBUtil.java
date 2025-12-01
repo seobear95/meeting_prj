@@ -11,6 +11,9 @@ public class DBUtil {
          try {
              if( conn == null){
                  conn = DriverManager.getConnection(url, user,password);
+             }else{
+                 conn.close();
+                 conn = DriverManager.getConnection(url, user,password);
              }
 
          } catch (SQLException e) {
