@@ -9,7 +9,10 @@ public class DBUtil {
 
      public static Connection getConnection() throws SQLException {
          try {
-             conn = DriverManager.getConnection(url, user,password);
+             if( conn == null){
+                 conn = DriverManager.getConnection(url, user,password);
+             }
+
          } catch (SQLException e) {
              throw new SQLException(e);
          }
